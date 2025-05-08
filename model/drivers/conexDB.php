@@ -2,17 +2,17 @@
 
 namespace app\models\drivers;
 
-use mysqli;
+use mysql;
 
 class ConexDB {
     private $host = 'localhost';
     private $user = 'root';
     private $pwd = '';
-    private $nameDB = 'examen_pr2';
+    private $nameDB = 'proyecto_1_db';
 
     private $conex = null;
 
-    public function __construct()
+    public function _conexion_php()
     {
         $this->conex = new mysqli(
             $this->host,
