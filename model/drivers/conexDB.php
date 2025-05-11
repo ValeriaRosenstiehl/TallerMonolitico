@@ -21,7 +21,7 @@ class ConexDB {
             $this->nameDB
         );
     }
-
+ 
     public function execSQL($sql){
         return $this->conex->query($sql);
     }
