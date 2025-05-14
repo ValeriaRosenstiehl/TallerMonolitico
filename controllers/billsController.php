@@ -2,41 +2,41 @@
 
 namespace app\controllers;
 
-use app\model\entities\expenses;
+use app\model\entities\Bills;
 
-class ExpensesController
+class BillsController
 {
 
     public function addNewExpense($request)
     {
-        $expense = new Expenses();
-        $expense->set('id',$id);
-        $expense->set('category_id', $category_id);
-        $expense->set('month', $month);
-        $expense->set('year', $year);
-        $expense->set('value', $value);
+        $bill = new Bills();
+        $bill->set('id',$id);
+        $bill->set('category_id', $category_id);
+        $bill->set('month', $month);
+        $bill->set('year', $year);
+        $bill->set('value', $value);
         return $expense->addNewExpense(); 
 
     }
 
-    public function modifyExpenseValue($request)
+    public function modifyBillValue($request)
     {
-        $expense = new Expenses();
-        $expense->set('id', $id);
-        $expense->set('category_id', $category_id);
-        $expense->set('month', $month);
-        $expense->set('year', $year);
-        $expense->set('value', $value);
-        return $expense->modifyExpenseValue();  
+        $bill = new Bills();
+        $bill->set('id', $id);
+        $bill->set('category_id', $category_id);
+        $bill->set('month', $month);
+        $bill->set('year', $year);
+        $bil->set('value', $value);
+        return $bill->modifyBillValue();  
 
     }
 
-    public function deleteExpense(){
-        $expense= new expense();
-        $expense->set('id', $id);
-        return $expense->deleteExpense(); 
+    public function deleteBill(){
+        $bill= new bill();
+        $bill->set('id', $id);
+        return $bill->deleteBill(); 
 
     }
 
-//traer la query
+
 }
