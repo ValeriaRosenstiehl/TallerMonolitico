@@ -7,7 +7,7 @@ use app\model\entities\Bills;
 class BillsController
 {
 
-    public function addNewExpense($request)
+    public function addNewBill($request)
     {
         $bill = new Bills();
         $bill->set('id',$id);
@@ -15,7 +15,7 @@ class BillsController
         $bill->set('month', $month);
         $bill->set('year', $year);
         $bill->set('value', $value);
-        return $expense->addNewExpense(); 
+        return $bill->addNewBill(); 
 
     }
 

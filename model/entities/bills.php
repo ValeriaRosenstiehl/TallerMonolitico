@@ -49,7 +49,7 @@ class Expenses extends Transaction
 
     public function modifyValue()
     {
-         $sql = "UPDATE expenses SET category_id = ?, value = ? WHERE id = ?";
+         $sql = "UPDATE bills SET category_id = ?, value = ? WHERE id = ?";
         $conex = new ConexDB();
         $resultDb = $conex->prepare($sql);
         $resultDb->bind_param("id", $category_id, $value, $id);
