@@ -40,9 +40,9 @@ class Expenses extends Transaction
         $sql="Insert into bills (`value`, `idCategory`, `idReport`) VALUES (?, ?, ?)";
         $conex = new ConexDB();
         $resultDb = $conex->prepare($sql);
-        if($sql){
-            throw new \Exception("Error preparando la consulta SQL.");
-        }
+        // if($sql){
+        //     throw new \Exception("Error preparando la consulta SQL.");
+        // }
        // Asumimos: value = float, category_id = int, report_id = int
         $resultDb->bind_param("dii", $data['value'], $data['category_id'], $data['report_id']);
 

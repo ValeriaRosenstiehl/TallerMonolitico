@@ -11,10 +11,9 @@ class BillsController
     {
         $bill = new Bills();
         $bill->set('id',$id);
-        $bill->set('category_id', $category_id);
-        $bill->set('month', $month);
-        $bill->set('year', $year);
+        $bill->set('idCategory', $idCategory);
         $bill->set('value', $value);
+        $bill->set('idReport', $idReport);
         return $bill->addNewBill(); 
 
     }
@@ -23,10 +22,9 @@ class BillsController
     {
         $bill = new Bills();
         $bill->set('id', $id);
-        $bill->set('category_id', $category_id);
-        $bill->set('month', $month);
-        $bill->set('year', $year);
+        $bill->set('idCategory', $idCategory);
         $bil->set('value', $request['value']);
+        $bill->set('idReport', $idReport);
         return $bill->modifyBillValue();  
 
     }
