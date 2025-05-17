@@ -14,7 +14,7 @@ class Category extends Transaction
 
     public function all()
     {
-        $sql = "select * from category";
+        $sql = "select * from categories";
         $conex = new ConexDB();
         $resultDb = $conex->execSQL($sql);
         $category = [];
@@ -33,13 +33,13 @@ class Category extends Transaction
 
     public function add()
     {
-        // Validate inputs
-    if (empty($name)) {
-        throw new Exception("El nombre de la categoría no puede estar vacío.");
-    }
-    if ($percentage <= 0 || $percentage > 100) {
-        throw new Exception("El porcentaje debe ser mayor que cero y no superar el 100%.");
-    }
+    //     // Validate inputs
+    // if (empty($name)) {
+    //     throw new Exception("El nombre de la categoría no puede estar vacío.");
+    // }
+    // if ($percentage <= 0 || $percentage > 100) {
+    //     throw new Exception("El porcentaje debe ser mayor que cero y no superar el 100%.");
+    // }
 
     // Prepare SQL statement
     $sql = "INSERT INTO category (nombre, percentaje) VALUES (?, ?)";
@@ -64,29 +64,29 @@ class Category extends Transaction
 
     public function modify()
     {
-        // Validaciones
-    if (empty($newName)) {
-        throw new Exception("El nombre de la categoría no puede estar vacío.");
-    }
-    if ($newPercentage <= 0 || $newPercentage > 100) {
-        throw new Exception("El porcentaje debe ser mayor que cero y no superar el 100%.");
-    }
+    //     // Validaciones
+    // if (empty($newName)) {
+    //     throw new Exception("El nombre de la categoría no puede estar vacío.");
+    // }
+    // if ($newPercentage <= 0 || $newPercentage > 100) {
+    //     throw new Exception("El porcentaje debe ser mayor que cero y no superar el 100%.");
+    // }
 
     $conex = new ConexDB();
 
     // Verificar si la categoría está relacionada con algún gasto
-    $sqlCheck = "SELECT COUNT(*) as total FROM expense WHERE category_id = ?";
-    $stmtCheck = $conex->prepare($sqlCheck);
-    $stmtCheck->bind_param("i", $id);
-    $stmtCheck->execute();
-    $result = $stmtCheck->get_result();
+    $resultDb = "SELECT COUNT(*) as total FROM expense WHERE category_id = ?";
+    $resultDb = $conex->prepare($resultDb);
+   $resultDb->bind_param("i", $id);
+    $$resultDb->execute();
+    $result = $resultDb->get_result();
     $row = $result->fetch_assoc();
     if ($row['total'] > 0) {
-        $stmtCheck->close();
+        $resultDb->close();
         $conex->close();
         throw new Exception("No se puede modificar la categoría porque está relacionada a gastos.");
     }
-    $stmtCheck->close();
+    $resultDb->close();
 
     // Preparar y ejecutar la actualización
     $sql = "UPDATE category SET nombre = ?, percentaje = ? WHERE id = ?";

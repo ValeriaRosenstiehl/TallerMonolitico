@@ -19,7 +19,7 @@
         </div>
         <div>
             <label>Category:</label>
-        <select name="category_id" required>
+        <select name="idCategory" required>
         <option value="">-- Select category --</option>
         <?php foreach ($category as $cat): ?>
             <option value="<?= $cat['id'] ?>"><?= htmlspecialchars($cat['nombre']) ?></option>

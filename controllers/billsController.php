@@ -26,7 +26,7 @@ class BillsController
         $bill->set('category_id', $category_id);
         $bill->set('month', $month);
         $bill->set('year', $year);
-        $bil->set('value', $value);
+        $bil->set('value', $request['value']);
         return $bill->modifyBillValue();  
 
     }
@@ -34,7 +34,7 @@ class BillsController
     public function deleteBill(){
         $bill= new bill();
         $bill->set('id', $id);
-        return $bill->deleteBill(); 
+        return $bill->deleteBill($request['id']); 
 
     }
 
