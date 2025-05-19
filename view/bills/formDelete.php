@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/paginas.css">
+    <link rel="stylesheet" href="../css/deletebills.css">
     <title>Delete Bill</title>
 </head>
 
@@ -20,7 +20,7 @@
             <button type="submit">Save</button>
         </div>
     </form>
-    <a href="../menu.php">Back</a>
+    <a href="menu.php">Back</a>
    
 </body>
 

@@ -10,13 +10,14 @@ include '../../controllers/incomeController.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/category.css">
     <title>Add Income</title>
 </head>
 
 <body>
-    <h1>Add Income</h1>
+    
     <form action="actions/addIncome.php" method="post">
-        
+        <h1>Add Income</h1>
         <div>
             <label>Value:</label>
             <input type="text" name="name" required>
@@ -32,8 +33,9 @@ include '../../controllers/incomeController.php';
         </div>
             <button type="submit">Save</button>
         </div>
+        <a href="menu.php">Back</a>
     </form>
-    <a href="../menu.php">Back</a>
+    
    
 </body>
 
