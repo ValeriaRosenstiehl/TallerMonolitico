@@ -1,7 +1,7 @@
 <?php
-include '../../model/drivers/conexDB.php';
-include '../../model/entities/bills.php';
-include '../../controllers/billsController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\BillController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bill.php';
 
 use app\controllers\BillsController;
 

@@ -1,7 +1,7 @@
 <?php
-include '../../model/drivers/conexDB.php';
-include '../../model/entities/income.php';
-include '../../controllers/incomeController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\ReportController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Report.php';
 
 ?>
  <!DOCTYPE html>
@@ -26,7 +26,7 @@ include '../../controllers/incomeController.php';
                 <select name="idReport" required>
                 <option value="">-- Select report --</option>
                 <?php foreach ($report as $rep): ?>
-                    <option value="<?= $rep['id'] ?>"><?= htmlspecialchars($rep['nombre']) ?></option>
+                    <option value="<?= $rep['month'] ?>"><?= htmlspecialchars($rep['month']) ?></option>
                 <?php endforeach; ?>
                 </select>
         </div>

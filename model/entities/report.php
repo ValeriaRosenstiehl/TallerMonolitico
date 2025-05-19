@@ -6,23 +6,24 @@ use app\models\drivers\ConexDB;
 
 class Report
 {
-    private $conex;
+    private ConexDB $conex;
     private $id = 0;
     private $month = null;
     private $year = 0;
+
     
-    public function setConex($conex)
+    public function setConex(ConexDB $conex)
     {
-        $this->$conex=$conex;
+        $this->conex=$conex;
     }
-    public function __construct($id,$month = null,$year = 0)
+    public function __construct($id,$month,$year)
     {
-        $this->$id=$id;
-        $this->$month=$month;
-        $this->$year=$year;
+        $this->id=$id;
+        $this->month=$month;
+        $this->year=$year;
 
     }
-    public function all()
+    public function show()
     {
         $sql = "SELECT * FROM reports";
         
@@ -43,7 +44,7 @@ class Report
 
     public function add()
     {
-        $sql="Insert into reports (`month`, `year`) VALUES (".$this->month.", ".$this->year.")";
+        $sql="Insert into reports (`month`, `year`) VALUES ('".$this->month."', ".$this->year.")";
         $this->conex->execSQL($sql);
         $this->conex->close();
 

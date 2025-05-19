@@ -9,7 +9,7 @@
 
 <body>
     <h1>Modify Income Value</h1>
-    <form action="actions/modifyIncome.php" method="post">
+    <form action="actions/modifyIncomeValue.php" method="post">
         <div>
             <label>Enter the Id of the Income you want to modify:</label>
             <input type="text" name="id" required>

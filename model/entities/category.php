@@ -3,24 +3,25 @@
 namespace app\model\entities;
 
 use app\models\drivers\ConexDB;
+use Exception;
 
 class Category
 {
-    private $conex;
+    private ConexDB $conex;
     private $id = 0;
     private $name = null;
     private $percentage = null;
 
 
-     public function setConex($conex)
+     public function setConex(ConexDB $conex)
     {
         $this->$conex=$conex;
     }
     public function __construct($id,$name,$percentage)
     {
-        $this->$id=$id;
-        $this->$name=$name;
-        $this->$percentage=$percentage;
+        $this->id=$id;
+        $this->name=$name;
+        $this->percentage=$percentage;
        
 
     }
@@ -28,8 +29,8 @@ class Category
      public function show()
     {
          $sql = "SELECT * FROM categories";
-        
-        $resultDb = $this->conex->execSQL($sql);
+        try{
+            $resultDb = $this->conex->execSQL($sql);
         $categories = [];
 
         if ($resultDb->num_rows > 0) {
@@ -39,13 +40,19 @@ class Category
             }
         }
         $this->conex->close();
-        return $categories; 
+        return $categories;  
+        }
+        catch(Exception $e){
+           echo "<script>console.error('Error: " . addslashes($e->getMessage()) . "');</script>";
+           return null;
+        }
+       
 
     }
 
     public function add()
     {
-        $sql="Insert into bills (`name`, `percentage`) VALUES (".$this->name.", ".$this->percentage.")";
+        $sql="Insert into bills (`name`, `percentage`) VALUES ('".$this->name."', ".$this->percentage.")";
         
         $this->conex->execSQL($sql);
     //     // Validate inputs

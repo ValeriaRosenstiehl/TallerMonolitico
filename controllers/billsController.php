@@ -2,17 +2,25 @@
 
 namespace app\controllers;
 
+use app\model\entities\Category;
 use app\models\entities\Bills;
 use app\models\drivers\ConexDB;
 
 class BillsController
 {
+    public function queryAllBills()
+    {
+        $bills = new Bills(0, 0.0);
+        $data = $bills->show();
+        return $data;
+    }
 
     public function addNewBill($request)
     {
-        $value = isset($_POST['value']) ? floatval($_POST['value']) : 0.0;
-        $idCategory = isset($_POST['idCategory']) ? floatval($_POST['idCategory']) : 0;
-        $idReport = isset($_POST['idReport']) ? floatval($_POST['idReport']) : 0;
+        //cambia a request
+        $value = isset($request['value']) ? floatval($request['value']) : 0.0;
+        $idCategory = isset($request['idCategory']) ? floatval($request['idCategory']) : 0;
+        $idReport = isset($request['idReport']) ? floatval($request['idReport']) : 0;
         $bill = new Bills(0.0, $value, $idCategory,$idReport);
         $conexDB = new ConexDB;
         $bill->setConex($conexDB);
@@ -23,8 +31,8 @@ class BillsController
 
     public function modifyBillValue($request)
     {
-        $value = isset($_POST['value']) ? floatval($_POST['value']) : 0.0;
-        $id = isset($_POST['id']) ? floatval($_POST['id']) : 0;
+        $value = isset($request['value']) ? floatval($request['value']) : 0.0;
+        $id = isset($request['id']) ? floatval($request['id']) : 0;
         $bill = new Bills($id, $value);
         $conexDB = new ConexDB;
         $bill->setConex($conexDB);
@@ -34,7 +42,7 @@ class BillsController
     }
 
     public function deleteBill(){
-        $id = isset($_POST['id']) ? floatval($_POST['id']) : 0;
+        $id = isset($request['id']) ? floatval($request['id']) : 0;
         $bill = new Bills($id,0.0);
         $conexDB = new ConexDB;
         $bill->setConex($conexDB);

@@ -1,11 +1,12 @@
 <?php
-include '../../model/drivers/conexDB.php';
-include '../../model/entities/reports.php';
-include '../../controllers/reportController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\ReportController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Report.php';
 
 use app\controllers\ReportController;
 
     $controller = new reportController();
+  
     $result = $controller->addNewReport($_POST);
     //falta validar si el bill ya existe
     ?>
@@ -21,13 +22,13 @@ use app\controllers\ReportController;
         <body>
             <h1>Result:</h1>
             <?php
-            if ($result) {
-                echo '<p>Report Saved</p>';
-            } else {
+            if ($result = null) {
                 echo '<p>The operation was unsuccesfull</p>';
+            } else {
+                echo '<p>Report Saved</p>';
             }
             ?>
-            <a href="../menu.php">Back</a>
+            <a href="../../../index.php">Back</a>
         </body>
 
         </html>

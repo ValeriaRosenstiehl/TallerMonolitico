@@ -7,12 +7,18 @@ use app\models\drivers\ConexDB;
 
 class ReportController
 {
+    public function queryAllReport()
+    {
+        $reports = new Report(0,null, 0.0);
+        $data = $reports->show();
+        return $data;
+    }
 
     public function addNewReport($request)
     {
-        $month = isset($_POST['month']) ? floatval($_POST['month']) : 0.0;
-        $year = isset($_POST['year']) ? floatval($_POST['year']) : 0;
-        $report = new Report(0.0, $month, $year);
+        $month = $request['month']; //aqui quite algo
+        $year = isset($request['year']) ? floatval($request['year']) : 0;
+        $report = new Report(0, $month, $year);
         $conexDB = new ConexDB;
         $report->setConex($conexDB);
         $report->add();

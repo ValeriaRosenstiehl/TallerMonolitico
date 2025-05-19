@@ -6,23 +6,23 @@ use app\models\drivers\ConexDB;
 
 class Income
 {
-    private $conex;
+    private ConexDB $conex;
     private $id = 0;
     private $value = 0;
     private $idReport = 0;
     
-    public function setConex($conex)
+    public function setConex(ConexDB $conex)
     {
         $this->$conex=$conex;
     }
     public function __construct($id,$value = 0.0,$idReport = 0)
     {
-        $this->$id=$id;
-        $this->$value=$value;
-        $this->$idReport=$idReport;
+        $this->id=$id;
+        $this->value=$value;
+        $this->idReport=$idReport;
 
     }
-    public function all()
+    public function show()
     {
         $sql = "SELECT * FROM income";
         

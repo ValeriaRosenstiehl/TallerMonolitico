@@ -1,8 +1,7 @@
 <?php
-include '../../model/drivers/conexDB.php';
-include '../../model/entities/transaction.php';
-include '../../model/entities/income.php';
-include '../../controllers/incomeController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\IncomeController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Income.php';
 
 use app\controllers\IncomeController;
 $controller = new IncomeController();

@@ -1,8 +1,7 @@
 <?php
-include '../../model/drivers/conexDB.php';
-include '../../model/entities/transaction.php';
-include '../../model/entities/category.php';
-include '../../controllers/categoryController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\CategoryController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Category.php';
 
 use app\controllers\CategoryController;
 use app\model\entities\Category;

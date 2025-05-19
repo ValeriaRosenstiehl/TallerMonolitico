@@ -15,11 +15,11 @@ include '../../controllers/billsController.php';
 
 <body>
     <h1>Add Report</h1>
-    <form action="actions/addCategory.php" method="post">
+    <form action="actions/addReport.php" method="post">
         
             <div>
             <label>Month:</label>
-        <select name="mesInput" required>
+        <select name="month" required>
             <option value="">-- Select month --</option>
             <option value="January">January</option>
             <option value="February">February</option>
@@ -45,7 +45,7 @@ include '../../controllers/billsController.php';
             <button type="submit">Save</button>
         </div>
     </form>
-    <a href="../menu.php">Back</a>
+    <a href="../../index.php">Back</a>
    
 </body>
 

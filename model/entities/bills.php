@@ -7,22 +7,22 @@ use app\models\drivers\ConexDB;
 
 class Bills
 {
-    private $conex;
+    private ConexDB $conex;
     private $id = 0;
     private $value = 0;
     private $idCategory = 0;
     private $idReport = 0;
     
-    public function setConex($conex)
+    public function setConex(ConexDB $conex)
     {
         $this->$conex=$conex;
     }
     public function __construct($id,$value,$idCategory = 0,$idReport = 0)
     {
-        $this->$id=$id;
-        $this->$value=$value;
-        $this->$idCategory=$idCategory;
-        $this->$idReport=$idReport;
+        $this->id=$id;
+        $this->value=$value;
+        $this->idCategory=$idCategory;
+        $this->idReport=$idReport;
 
     }
 

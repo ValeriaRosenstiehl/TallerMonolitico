@@ -1,8 +1,13 @@
 <?php
-include '../../model/drivers/conexDB.php';
-include '../../model/entities/bills.php';
-include '../../controllers/billsController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\BillController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bill.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\CategoryController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Category.php';
 
+use app\controllers\CategoryController;
+$controller = new CategoryController();
+$category = $controller->queryAllCategory();
 ?>
  <!DOCTYPE html>
 <html lang="es">
@@ -22,7 +27,7 @@ include '../../controllers/billsController.php';
                 <select name="idCategory" required>
                 <option value="">-- Select category --</option>
                 <?php foreach ($category as $cat): ?>
-                    <option value="<?= $cat['id'] ?>"><?= htmlspecialchars($cat['nombre']) ?></option>
+                    <option value="<?= $cat['id'] ?>"><?= htmlspecialchars($cat['name']) ?></option>
                 <?php endforeach; ?>
                 </select>
         </div>
@@ -31,7 +36,7 @@ include '../../controllers/billsController.php';
                 <select name="idReport" required>
                 <option value="">-- Select report --</option>
                 <?php foreach ($report as $rep): ?>
-                    <option value="<?= $rep['id'] ?>"><?= htmlspecialchars($rep['nombre']) ?></option>
+                    <option value="<?= $rep['id'] ?>"><?= htmlspecialchars($rep['id']) ?></option>
                 <?php endforeach; ?>
                 </select>
         </div>
