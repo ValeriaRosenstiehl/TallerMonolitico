@@ -1,7 +1,7 @@
 <?php
-include '../../model/drivers/conexDB.php';
-include '../../model/entities/bills.php';
-include '../../controllers/billsController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\BillsController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bills.php';
 
 ?>
  <!DOCTYPE html>
@@ -10,13 +10,15 @@ include '../../controllers/billsController.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/category.css">
     <title>Add Report</title>
 </head>
 
 <body>
     <h1>Add Report</h1>
     <form action="actions/addReport.php" method="post">
-        
+    
+        <h1>Add Report</h1>
             <div>
             <label>Month:</label>
         <select name="month" required>
@@ -44,8 +46,9 @@ include '../../controllers/billsController.php';
         </div>
             <button type="submit">Save</button>
         </div>
-    </form>
+   
     <a href="../../index.php">Back</a>
+    
    
 </body>
 

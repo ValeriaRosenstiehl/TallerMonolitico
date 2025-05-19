@@ -15,13 +15,14 @@ $category = $controller->queryAllCategory();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/paginas.css">
     <title>Add Bill</title>
 </head>
-
+    
 <body>
-    <h1>Add Bill</h1>
+    
     <form action="actions/addBill.php" method="post">
-        
+        <h1>Add Bill</h1>
         <div>
             <label>Category:</label>
                 <select name="idCategory" required>
@@ -49,8 +50,12 @@ $category = $controller->queryAllCategory();
         <div>
             <button type="submit">Save</button>
         </div>
+         <a href="menu.php">Back</a>
+         <a href="../../inicio/index.php">Home</a>
+        
+    
     </form>
-    <a href="../menu.php">Back</a>
+   
    
 </body>
 

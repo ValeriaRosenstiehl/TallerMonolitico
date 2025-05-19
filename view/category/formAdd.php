@@ -10,13 +10,14 @@ include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Category.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/category.css">
     <title>Add Category</title>
 </head>
 
 <body>
-    <h1>Add Category</h1>
+    
     <form action="actions/addCategory.php" method="post">
-        
+        <h1>Add Category</h1>
         <div>
             <label>Name:</label>
             <input type="text" name="name" required>
@@ -27,8 +28,10 @@ include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Category.php';
         </div>
             <button type="submit">Save</button>
         </div>
+        <a href="menu.php">Back</a><br>
+         <a href="../../inicio/index.php">Home</a>
     </form>
-    <a href="../menu.php">Back</a>
+    
    
 </body>
 
