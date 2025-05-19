@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modify Bill</title>
+    <title>Modify Category</title>
 </head>
 
 <body>
-    <h1>Modify Bill Value</h1>
+    <h1>Modify Category</h1>
     <form action="actions/modifyBill.php" method="post">
         <div>
-            <label>Enter the Id of the bill you want to modify:</label>
+            <label>Enter the Id of the Category you want to modify:</label>
             <input type="text" name="id" required>
         </div>
         <div>
-            <label>Enter the new value:</label>
+            <label>Enter the new name:</label>
+            <input type="text" name="value" required>
+        </div>
+        <div>
+            <label>Enter the new percentage:</label>
             <input type="text" name="value" required>
         </div>
         <div>

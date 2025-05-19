@@ -1,12 +1,12 @@
 <?php
 include '../../model/drivers/conexDB.php';
-include '../../model/entities/bills.php';
-include '../../controllers/billsController.php';
+include '../../model/entities/transaction.php';
+include '../../model/entities/income.php';
+include '../../controllers/incomeController.php';
 
-use app\controllers\BillsController;
-
-$controller = new BillsController();
-$result = $controller->deleteBill($_GET['id']);
+use app\controllers\IncomeController;
+$controller = new IncomeController();
+$result = $controller->modifyIncomeValue($_POST);
 //falta validar si existe el bill
 ?>
 <!DOCTYPE html>
@@ -15,14 +15,14 @@ $result = $controller->deleteBill($_GET['id']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete bill</title>
+    <title>Modify Income</title>
 </head>
 
 <body>
     <h1>Result:</h1>
     <?php
     if ($result) {
-        echo '<p>Bill Deleted</p>';
+        echo '<p>The new value was updated</p>';
     } else {
         echo '<p>The operation was unsuccesfull</p>';
     }

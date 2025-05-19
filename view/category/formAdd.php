@@ -1,0 +1,38 @@
+<?php
+include '../../model/drivers/conexDB.php';
+include '../../model/entities/transaction.php';
+include '../../model/entities/bills.php';
+include '../../controllers/billsController.php';
+
+?>
+ <!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+</head>
+
+<body>
+    <h1>Add Category</h1>
+    <form action="actions/addCategory.php" method="post">
+        
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label>Percentage:</label>
+            <input type="number" name="percentage" required>
+        </div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+    <a href="../menu.php">Back</a>
+   
+</body>
+
+</html>
+
+    

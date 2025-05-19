@@ -1,7 +1,7 @@
 <?php
 include '../../model/drivers/conexDB.php';
-include '../../model/entities/bills.php';
-include '../../controllers/billsController.php';
+include '../../model/entities/income.php';
+include '../../controllers/incomeController.php';
 
 ?>
  <!DOCTYPE html>
@@ -10,21 +10,16 @@ include '../../controllers/billsController.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Bill</title>
+    <title>Add Income</title>
 </head>
 
 <body>
-    <h1>Add Bill</h1>
-    <form action="actions/addBill.php" method="post">
+    <h1>Add Income</h1>
+    <form action="actions/addIncome.php" method="post">
         
         <div>
-            <label>Category:</label>
-                <select name="idCategory" required>
-                <option value="">-- Select category --</option>
-                <?php foreach ($category as $cat): ?>
-                    <option value="<?= $cat['id'] ?>"><?= htmlspecialchars($cat['nombre']) ?></option>
-                <?php endforeach; ?>
-                </select>
+            <label>Value:</label>
+            <input type="text" name="name" required>
         </div>
         <div>
             <label>Report:</label>
@@ -35,13 +30,6 @@ include '../../controllers/billsController.php';
                 <?php endforeach; ?>
                 </select>
         </div>
-    
-
-         <div>
-            <label>Value:</label>
-            <input type="number" name="value" required>
-        </div>
-        <div>
             <button type="submit">Save</button>
         </div>
     </form>

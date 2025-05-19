@@ -9,18 +9,10 @@
     <a href="view/category/menu.php">Category Menu</a> <br>
     <a href="view/bills/menu.php">Bills Menu</a><br>
     <a href="view/income/menu.php">Income Menu</a><br>
+    <a href="view/reports/formAdd.php">Add Report</a><br>
 
-    <p>Reporte:</p>
 </body>
 </html>
- <?php echo 'Month:';?>
- <br>
-
-<?php echo 'Income:';?> <br>
-
-<?php echo 'Bills';?> <br>
-
- <?php echo 'Categories:';?><br>
 
 
     

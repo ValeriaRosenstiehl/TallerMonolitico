@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modify Bill</title>
+    <title>Modify Income</title>
 </head>
 
 <body>
-    <h1>Modify Bill Value</h1>
-    <form action="actions/modifyBill.php" method="post">
+    <h1>Modify Income Value</h1>
+    <form action="actions/modifyIncome.php" method="post">
         <div>
-            <label>Enter the Id of the bill you want to modify:</label>
+            <label>Enter the Id of the Income you want to modify:</label>
             <input type="text" name="id" required>
         </div>
         <div>

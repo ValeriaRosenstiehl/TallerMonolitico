@@ -1,12 +1,14 @@
 <?php
 include '../../model/drivers/conexDB.php';
-include '../../model/entities/bills.php';
-include '../../controllers/billsController.php';
+include '../../model/entities/transaction.php';
+include '../../model/entities/category.php';
+include '../../controllers/categoryController.php';
 
-use app\controllers\BillsController;
+use app\controllers\CategoryController;
+use app\model\entities\Category;
 
-$controller = new BillsController();
-$result = $controller->deleteBill($_GET['id']);
+$controller = new CategoryController();
+$result = $controller->modifyCategory($_POST);
 //falta validar si existe el bill
 ?>
 <!DOCTYPE html>
@@ -15,14 +17,14 @@ $result = $controller->deleteBill($_GET['id']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete bill</title>
+    <title>Modify Category</title>
 </head>
 
 <body>
     <h1>Result:</h1>
     <?php
     if ($result) {
-        echo '<p>Bill Deleted</p>';
+        echo '<p>Category was updated</p>';
     } else {
         echo '<p>The operation was unsuccesfull</p>';
     }

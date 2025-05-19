@@ -7,8 +7,8 @@
 </head>
 <body>
      <title>Actions:</title>
-    <a href="/view/category/menu.php">Add Category</a><br>
-    <a href="/view/category/addCategory.php">Delete Category</a><br>
-    <a href="/view/category/modifyCategory.php">Modify Category</a><br>
+    <a href="formAdd.php">Add Category</a><br>
+    <a href="formDelete.php">Delete Category</a><br>
+    <a href="formModify.php">Modify Category</a><br>
 </body>
 </html>

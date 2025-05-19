@@ -7,7 +7,7 @@
 </head>
 <body>
      <title>Actions:</title>
-    <a href="/view/income/addIncome.php">Add Income</a><br>
-    <a href="/view/income/modifyIncomeValue.php">Modify Income Value</a><br>
+    <a href="formAdd.php">Add Income</a><br>
+    <a href="formModify.php">Modify Income Value</a><br>
 </body>
 </html>

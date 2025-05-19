@@ -2,49 +2,52 @@
 
 namespace app\model\entities;
 
-use app\model\drivers\ConexDB;
+use app\models\drivers\ConexDB;
 
-class Expenses extends Transaction
+class Report
 {
+    private $conex;
+    private $id = 0;
+    private $month = null;
+    private $year = 0;
+    
+    public function setConex($conex)
+    {
+        $this->$conex=$conex;
+    }
+    public function __construct($id,$month = null,$year = 0)
+    {
+        $this->$id=$id;
+        $this->$month=$month;
+        $this->$year=$year;
+
+    }
     public function all()
     {
-         $sql = "SELECT * FROM reports";
-        $conex = new ConexDB();
-        $resultDb = $conex->execSQL($sql);
-        $idreport = [];
+        $sql = "SELECT * FROM reports";
+        
+        $resultDb = $this->conex->execSQL($sql);
+        $report = [];
 
         if ($resultDb->num_rows > 0) {
             while ($rowDb = $resultDb->fetch_assoc()) {
-                $reports = new reports();
-                $reports->set('id', $rowDb['id']);
-                $reports->set('month', $rowDb['month']);
-                $reports->set('anio', $rowDb['anio']);
-                $reports[] = $reports;
+                $report[] = [];
+                $report[] = new Report($rowDb['id'], $rowDb['month'], $rowDb['year']);
             }
         }
 
-        $conex->close();
-        return $idreport; 
+        $this->conex->close();
+        return $report; 
 
     }
+
     public function add()
     {
-        $sql="Insert into reports (`month`, `anio`) VALUES (?, ?)";
-        $conex = new ConexDB();
-        $resultDb = $conex->prepare($sql);
-        // if($sql){
-        //     throw new \Exception("Error preparando la consulta SQL.");
-        // }
-       // Asumimos: value = float, category_id = int, report_id = int
-        $resultDb->bind_param("ii", $mont,$anio);
-
-        $resultDb->execute();
-        if ($sql->error) {
-        throw new \Exception("Error al ejecutar: " . $sql->error);
-    }
-        $conex->close();
+        $sql="Insert into reports (`month`, `year`) VALUES (".$this->month.", ".$this->year.")";
+        $this->conex->execSQL($sql);
+        $this->conex->close();
 
     }
+
    
-
-} 
+}

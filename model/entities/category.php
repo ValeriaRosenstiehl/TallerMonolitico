@@ -2,37 +2,52 @@
 
 namespace app\model\entities;
 
-use app\model\drivers\ConexDB;
+use app\models\drivers\ConexDB;
 
-class Category extends Transaction
+class Category
 {
-    public function percentage()
-    {
+    private $conex;
+    private $id = 0;
+    private $name = null;
+    private $percentage = null;
 
+
+     public function setConex($conex)
+    {
+        $this->$conex=$conex;
+    }
+    public function __construct($id,$name,$percentage)
+    {
+        $this->$id=$id;
+        $this->$name=$name;
+        $this->$percentage=$percentage;
+       
 
     }
 
-    public function all()
+     public function show()
     {
-        $sql = "select * from categories";
-        $conex = new ConexDB();
-        $resultDb = $conex->execSQL($sql);
-        $category = [];
+         $sql = "SELECT * FROM categories";
+        
+        $resultDb = $this->conex->execSQL($sql);
+        $categories = [];
+
         if ($resultDb->num_rows > 0) {
             while ($rowDb = $resultDb->fetch_assoc()) {
-                $category = new category();
-                $category->set('id', $rowDb['id']);
-                $category->set('name', $rowDb['nombre']);
-                $category->set('percentaje', $rowDb['percentaje']);
-                array_push($categories, $category);
+                $categories[] = [];
+                $categories[] = new Category($rowDb['id'], $rowDb['name'],$rowDb['percentage']);
             }
         }
-        $conex->close();
-        return $categories;
+        $this->conex->close();
+        return $categories; 
+
     }
 
     public function add()
     {
+        $sql="Insert into bills (`name`, `percentage`) VALUES (".$this->name.", ".$this->percentage.")";
+        
+        $this->conex->execSQL($sql);
     //     // Validate inputs
     // if (empty($name)) {
     //     throw new Exception("El nombre de la categoría no puede estar vacío.");
@@ -40,41 +55,25 @@ class Category extends Transaction
     // if ($percentage <= 0 || $percentage > 100) {
     //     throw new Exception("El porcentaje debe ser mayor que cero y no superar el 100%.");
     // }
-
-    // Prepare SQL statement
-    $sql = "INSERT INTO category (nombre, percentaje) VALUES (?, ?)";
-    $conex = new ConexDB();
-    $resultDb = $conex->execSQL($sql);
-    
-    // Bind parameters and execute
-    if ($resultDb) {
-        $resultDb->bind_param("sd", $name, $percentage); 
-        if ($resultDb->execute()) {
-            $resultDb->close();
-            $resultDb->close();
-            return true; // Successfully added
-        } else {
-            throw new Exception("Error al agregar la categoría: " . $resultDb->error);
-        }
-    } else {
-        throw new Exception("Error al preparar la consulta: " . $conex->error);
-    }
+    $this->conex->close();
 
     }
 
     public function modify()
     {
-    //     // Validaciones
-    // if (empty($newName)) {
-    //     throw new Exception("El nombre de la categoría no puede estar vacío.");
-    // }
-    // if ($newPercentage <= 0 || $newPercentage > 100) {
-    //     throw new Exception("El porcentaje debe ser mayor que cero y no superar el 100%.");
-    // }
+        $sql = "UPDATE categories SET name = ".$this->name." WHERE id = ".$this->id."";
+        $sql = "UPDATE categories SET percentage = ".$this->percentage." WHERE id = ".$this->id.""; 
+        
+        $this->conex->execSQL($sql);
+        $this->conex->close();
 
-    $conex = new ConexDB();
-
-    // Verificar si la categoría está relacionada con algún gasto
+  /**Validaciones
+   if (empty($newName)) {
+         throw new Exception("El nombre de la categoría no puede estar vacío.");
+     }
+    if ($newPercentage <= 0 || $newPercentage > 100) {
+         throw new Exception("El porcentaje debe ser mayor que cero y no superar el 100%.");
+     }
     $resultDb = "SELECT COUNT(*) as total FROM expense WHERE category_id = ?";
     $resultDb = $conex->prepare($resultDb);
    $resultDb->bind_param("i", $id);
@@ -103,15 +102,17 @@ class Category extends Transaction
     if (!$resultado) {
         throw new Exception("Error al modificar la categoría.");
     }
-    return true;
+    return true;*/
 
     }
 
-    public function delete()
+    public function delete($id)
     {
-        $conex = new ConexDB();
+       $sql = "DELETE FROM categories WHERE id = ".$id."";
+        $this->conex->execSQL($sql);
+        $this->conex->close(); 
 
-    // Verificar si la categoría está relacionada con algún gasto
+  /**Verificar si la categoría está relacionada con algún gasto
     $sqlCheck = "SELECT COUNT(*) as total FROM expense WHERE category_id = ?";
     $stmtCheck = $conex->prepare($sqlCheck);
     $stmtCheck->bind_param("i", $id);
@@ -140,7 +141,7 @@ class Category extends Transaction
     if (!$resultado) {
         throw new Exception("Error al eliminar la categoría.");
     }
-    return true;
+    return true;*/
 
     }
 }

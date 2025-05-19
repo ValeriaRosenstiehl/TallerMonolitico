@@ -2,68 +2,58 @@
 
 namespace app\model\entities;
 
-use app\model\drivers\ConexDB;
+use app\models\drivers\ConexDB;
 
-class Income extends Transaction
+class Income
 {
+    private $conex;
+    private $id = 0;
+    private $value = 0;
+    private $idReport = 0;
+    
+    public function setConex($conex)
+    {
+        $this->$conex=$conex;
+    }
+    public function __construct($id,$value = 0.0,$idReport = 0)
+    {
+        $this->$id=$id;
+        $this->$value=$value;
+        $this->$idReport=$idReport;
+
+    }
     public function all()
     {
-        $sql = "SELECT * FROM incomes";
-    $conex = new ConexDB();
-    $resultDb = $conex->execSQL($sql);
+        $sql = "SELECT * FROM income";
+        
+        $resultDb = $this->conex->execSQL($sql);
+        $income = [];
 
-    $incomes = [];
+        if ($resultDb->num_rows > 0) {
+            while ($rowDb = $resultDb->fetch_assoc()) {
+                $income[] = [];
+                $income[] = new Income($rowDb['id'], $rowDb['value'], $rowDb['idReport']);
+            }
+        }
 
-    while ($row = $result->fetch_assoc()) {
-        $income = new Income();
-        $income->set('id', $row['id']);
-        $income->set('month', $row['month']);
-        $income->set('year', $row['year']);
-        $income->set('value', $row['value']);
-        $incomes[] = $income;
-    }
-
-    $conex->close();
-    return $incomes;
+        $this->conex->close();
+        return $income; 
 
     }
 
-    public function add($month, $year, $value)
+    public function add()
     {
-        if ($value < 0) {
-            throw new \Exception("El valor del ingreso no puede ser negativo.");
-        }
-
-        if ($this->exists($month, $year)) {
-            throw new \Exception("Ya existe un ingreso registrado para ese mes y año.");
-        }
-
-        $sql = "INSERT INTO incomes (month, year, value) VALUES (?, ?, ?)";
-        $conex = new ConexDB();
-        $resultDb= $conex->prepare($sql);
-        $resultDb->bind_param("sid", $month, $year, $value);
-        $resultDb->execute();
-        $resultDb->close();
+        $sql="Insert into bills (`value`, `idReport`) VALUES (".$this->value.", ".$this->idReport.")";
+        $this->conex->execSQL($sql);
+        $this->conex->close();
 
     }
 
     public function modifyValue()
     {
-        if ($value < 0) {
-            throw new \Exception("El valor del ingreso no puede ser negativo.");
-        }
-
-        $sql = "UPDATE incomes SET value = ? WHERE month = ? AND year = ?";
-        $conex = new ConexDB();
-        $resultDb= $conex->prepare($sql);
-        $resultDb->bind_param("dsi", $value, $month, $year);
-        $resultDb->execute();
-
-        if ($resultDb->affected_rows === 0) {
-            throw new \Exception("No se encontró ingreso para ese mes y año.");
-        }
-
-        $conex->close();
+        $sql = "UPDATE income SET value = ".$this->value." WHERE id = ".$this->id."";
+        $this->conex->execSQL($sql);
+        $this->conex->close();
 
     }
 }

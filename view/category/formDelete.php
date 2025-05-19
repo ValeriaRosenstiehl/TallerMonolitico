@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Bill</title>
+    <title>Delete Category</title>
 </head>
 
 <body>
-    <h1>Delete Bill</h1>
-    <form action="actions/deleteBill.php" method="post">
+    <h1>Delete Category</h1>
+    <form action="actions/deleteCategory.php" method="post">
         <div>
-            <label>Enter the Id of the bill you want to delete:</label>
+            <label>Enter the Id of the category you want to delete:</label>
             <input type="text" name="id" required>
         </div>
         

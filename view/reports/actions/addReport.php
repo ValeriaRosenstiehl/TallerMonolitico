@@ -1,13 +1,12 @@
 <?php
 include '../../model/drivers/conexDB.php';
-include '../../model/entities/bills.php';
-include '../../controllers/billsController.php';
+include '../../model/entities/reports.php';
+include '../../controllers/reportController.php';
 
-use app\controllers\BillsController;
+use app\controllers\ReportController;
 
-   
-    $controller = new BillsController();
-    $result = $controller->addNewBill($_POST);
+    $controller = new reportController();
+    $result = $controller->addNewReport($_POST);
     //falta validar si el bill ya existe
     ?>
     <!DOCTYPE html>
@@ -16,14 +15,14 @@ use app\controllers\BillsController;
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Add Bill</title>
+            <title>Add Report</title>
         </head>
 
         <body>
             <h1>Result:</h1>
             <?php
             if ($result) {
-                echo '<p>Bill Saved</p>';
+                echo '<p>Report Saved</p>';
             } else {
                 echo '<p>The operation was unsuccesfull</p>';
             }
@@ -32,6 +31,3 @@ use app\controllers\BillsController;
         </body>
 
         </html>
-
-
-
