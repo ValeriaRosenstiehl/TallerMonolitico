@@ -11,7 +11,7 @@
     <a href="formAdd.php">Add Bill</a><br>
     <a href="formDelete.php">Delete Bill</a><br>
     <a href="formModify.php">Modify Bill</a><br>
-    <a href="../../inicio/index.php">Home</a>
+    <a href="../../index.php">Home</a>
 </body>
 
 </html>

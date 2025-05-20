@@ -41,7 +41,7 @@ class BillsController
 
     }
 
-    public function deleteBill(){
+    public function deleteBill($request){
         $id = isset($request['id']) ? floatval($request['id']) : 0;
         $bill = new Bills($id,0.0);
         $conexDB = new ConexDB;

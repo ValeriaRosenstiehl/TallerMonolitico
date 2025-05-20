@@ -1,7 +1,7 @@
 <?php
 include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\BillController.php';
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bill.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\BillsController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bills.php';
 
 use app\controllers\BillsController;
 
@@ -21,7 +21,7 @@ $result = $controller->modifyBillValue($_POST);
 <body>
     <h1>Result:</h1>
     <?php
-    if ($result) {
+    if ($result == null) {
         echo '<p>The new value was updated</p>';
     } else {
         echo '<p>The operation was unsuccesfull</p>';

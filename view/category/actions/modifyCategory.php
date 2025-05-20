@@ -22,10 +22,10 @@ $result = $controller->modifyCategory($_POST);
 <body>
     <h1>Result:</h1>
     <?php
-    if ($result) {
-        echo '<p>Category was updated</p>';
-    } else {
+    if ($result !== null) {
         echo '<p>The operation was unsuccesfull</p>';
+    } else {
+        echo '<p>Category was updated</p>';
     }
     ?>
     <a href="../menu.php">Back</a>

@@ -21,10 +21,10 @@ use app\controllers\CategoryController;
         <body>
             <h1>Result:</h1>
             <?php
-            if ($result) {
-                echo '<p>Category Saved</p>';
-            } else {
+            if ($result !== null) {
                 echo '<p>The operation was unsuccesfull</p>';
+            } else {
+                echo '<p>Category Saved</p>';
             }
             ?>
             <a href="../menu.php">Back</a>

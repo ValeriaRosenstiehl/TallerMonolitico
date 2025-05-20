@@ -17,7 +17,7 @@
         </div>
         
         <div>
-            <button type="submit">Save</button>
+            <button type="submit">Delete</button>
         </div>
     </form>
     <a href="menu.php">Back</a>

@@ -10,6 +10,8 @@ class ReportController
     public function queryAllReport()
     {
         $reports = new Report(0,null, 0.0);
+        $conexDB = new ConexDB;
+        $reports->setConex($conexDB);
         $data = $reports->show();
         return $data;
     }

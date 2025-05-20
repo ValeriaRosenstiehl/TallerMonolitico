@@ -11,7 +11,7 @@
 
 <body>
     
-    <form action="actions/modifyBill.php" method="post">
+    <form action="actions/modifyBillValue.php" method="post">
         <h1>Modify Bill Value</h1>
         <div>
             <label>Enter the Id of the bill you want to modify:</label>

@@ -1,13 +1,17 @@
 <?php
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\BillController.php';
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bill.php';
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\CategoryController.php';
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Category.php';
 
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Category.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\CategoryController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\ReportController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Report.php';
 use app\controllers\CategoryController;
-$controller = new CategoryController();
-$category = $controller->queryAllCategory();
+$categoryController = new CategoryController();
+$categories = $categoryController->queryAllCategory();
+use app\controllers\ReportController;
+$controller = new ReportController();
+$reports = $controller->queryAllReport();
+
 ?>
  <!DOCTYPE html>
 <html lang="es">
@@ -26,20 +30,32 @@ $category = $controller->queryAllCategory();
         <div>
             <label>Category:</label>
                 <select name="idCategory" required>
-                <option value="">-- Select category --</option>
-                <?php foreach ($category as $cat): ?>
-                    <option value="<?= $cat['id'] ?>"><?= htmlspecialchars($cat['name']) ?></option>
-                <?php endforeach; ?>
+                    <option value="">-- Select category --</option>
+                    <?php
+                    for ($i = 1; $i < count($categories); $i++) {
+                        $category = $categories[$i]; // Accedemos al elemento actual
+                        if ($category instanceof app\model\entities\Category) {
+                            echo '<option value="' . htmlspecialchars($category->getId()) . '">' . htmlspecialchars($category->getName()) . '</option>';
+                        }
+                    }?>
                 </select>
         </div>
         <div>
             <label>Report:</label>
-                <select name="idReport" required>
+               </select>
+        </div>
+        <div>
+            <label>Report:</label>
+            <select name="idReport" required>
                 <option value="">-- Select report --</option>
-                <?php foreach ($report as $rep): ?>
-                    <option value="<?= $rep['id'] ?>"><?= htmlspecialchars($rep['id']) ?></option>
-                <?php endforeach; ?>
-                </select>
+                <?php
+                for ($i = 1; $i < count($reports); $i++) {
+                    $report = $reports[$i]; // Accedemos al elemento actual
+                    if ($report instanceof app\model\entities\Report) {
+                        echo '<option value="' . htmlspecialchars($report->getId()) . '">' . htmlspecialchars($report->getMonth()) . "-" . htmlspecialchars($report->getYear()).'</option>';
+                    }
+                }?>
+            </select>
         </div>
     
 

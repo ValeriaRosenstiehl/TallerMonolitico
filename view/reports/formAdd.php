@@ -15,7 +15,7 @@ include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bills.php';
 </head>
 
 <body>
-    <h1>Add Report</h1>
+    
     <form action="actions/addReport.php" method="post">
     
         <h1>Add Report</h1>

@@ -23,6 +23,17 @@ class Report
         $this->year=$year;
 
     }
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getMonth() {
+        return $this->month;
+    }
+    public function getYear() {
+        return $this->year;
+    }
+    
     public function show()
     {
         $sql = "SELECT * FROM reports";

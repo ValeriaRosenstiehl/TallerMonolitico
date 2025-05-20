@@ -21,7 +21,7 @@ use app\controllers\IncomeController;
         <body>
             <h1>Result:</h1>
             <?php
-            if ($result) {
+            if ($result == null) {
                 echo '<p>Income Saved</p>';
             } else {
                 echo '<p>The operation was unsuccesfull</p>';

@@ -13,7 +13,7 @@ class Income
     
     public function setConex(ConexDB $conex)
     {
-        $this->$conex=$conex;
+        $this->conex=$conex;
     }
     public function __construct($id,$value = 0.0,$idReport = 0)
     {
@@ -43,7 +43,7 @@ class Income
 
     public function add()
     {
-        $sql="Insert into bills (`value`, `idReport`) VALUES (".$this->value.", ".$this->idReport.")";
+        $sql="Insert into income (`value`, `idReport`) VALUES (".$this->value.", ".$this->idReport.")";
         $this->conex->execSQL($sql);
         $this->conex->close();
 

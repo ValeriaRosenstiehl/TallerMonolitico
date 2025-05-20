@@ -13,19 +13,16 @@ $reports = $controller->queryAllReport();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/category.css">
-    <title>Add Income</title>
+    <title>Month Report</title>
 </head>
 
 <body>
     
-    <form action="actions/addIncome.php" method="post">
-        <h1>Add Income</h1>
+    <form action="showReport.php" method="post">
+        
+        
         <div>
-            <label>Value:</label>
-            <input type="number" name="value" required>
-        </div>
-        <div>
-            <label>Report:</label>
+            <label>Month Report:</label>
             <select name="idReport" required>
                 <option value="">-- Select report --</option>
                 <?php
@@ -37,9 +34,9 @@ $reports = $controller->queryAllReport();
                 }?>
             </select>
         </div>
-            <button type="submit">Save</button>
+            <button type="submit">Show</button>
         </div>
-        <a href="menu.php">Back</a>
+        <a href="showReport.php">Back</a>
     </form>
     
    

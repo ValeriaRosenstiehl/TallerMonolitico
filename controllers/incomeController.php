@@ -16,7 +16,7 @@ class IncomeController
 
     public function addNewIncome($request)
     {
-        echo "adding";
+        
         $value = isset($request['value']) ? floatval($request['value']) : 0.0;
         $idReport = isset($request['idReport']) ? floatval($request['idReport']) : 0;
         $income = new Income(0.0, $value, $idReport);

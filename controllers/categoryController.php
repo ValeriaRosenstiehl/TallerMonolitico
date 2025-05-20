@@ -11,6 +11,8 @@ class CategoryController
     public function queryAllCategory()
     {
         $categories = new Category(0,null, 0.0);
+        $conexDB = new ConexDB;
+        $categories->setConex($conexDB);
         $data = $categories->show();
         return $data;
     }
@@ -36,7 +38,7 @@ class CategoryController
         $category->modify();
     }
 
-    public function deleteCategory($id){
+    public function deleteCategory($request){
         $id = isset($request['id']) ? floatval($request['id']) : 0;
         $category = new Category($id,null,0);
         $conexDB = new ConexDB;

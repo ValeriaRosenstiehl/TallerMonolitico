@@ -10,7 +10,7 @@
 
 <body>
     
-    <form action="actions/modifyBill.php" method="post">
+    <form action="actions/modifyCategory.php" method="post">
         <h1>Modify Category</h1>
         <div>
             <label>Enter the Id of the Category you want to modify:</label>
@@ -18,11 +18,11 @@
         </div>
         <div>
             <label>Enter the new name:</label>
-            <input type="text" name="value" required>
+            <input type="text" name="name" required>
         </div>
         <div>
             <label>Enter the new percentage:</label>
-            <input type="text" name="value" required>
+            <input type="text" name="percentage" required>
         </div>
         <div>
             <button type="submit">Enter</button>

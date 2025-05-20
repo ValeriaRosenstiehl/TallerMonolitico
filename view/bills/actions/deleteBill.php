@@ -1,12 +1,12 @@
 <?php
 include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\drivers\conexDB.php';
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\BillController.php';
-include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bill.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\controllers\BillsController.php';
+include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Bills.php';
 
 use app\controllers\BillsController;
 
 $controller = new BillsController();
-$result = $controller->deleteBill($_GET['id']);
+$result = $controller->deleteBill($_POST);
 //falta validar si existe el bill
 ?>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ $result = $controller->deleteBill($_GET['id']);
 <body>
     <h1>Result:</h1>
     <?php
-    if ($result) {
+    if ($result == null) {
         echo '<p>Bill Deleted</p>';
     } else {
         echo '<p>The operation was unsuccesfull</p>';

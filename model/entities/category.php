@@ -15,7 +15,7 @@ class Category
 
      public function setConex(ConexDB $conex)
     {
-        $this->$conex=$conex;
+        $this->conex=$conex;
     }
     public function __construct($id,$name,$percentage)
     {
@@ -26,9 +26,17 @@ class Category
 
     }
 
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
      public function show()
     {
-         $sql = "SELECT * FROM categories";
+         $sql = "SELECT * FROM categories WHERE id IS NOT NULL";
         try{
             $resultDb = $this->conex->execSQL($sql);
         $categories = [];
@@ -52,7 +60,7 @@ class Category
 
     public function add()
     {
-        $sql="Insert into bills (`name`, `percentage`) VALUES ('".$this->name."', ".$this->percentage.")";
+        $sql="Insert into categories (`name`, `percentage`) VALUES ('".$this->name."', ".$this->percentage.")";
         
         $this->conex->execSQL($sql);
     //     // Validate inputs
@@ -151,4 +159,8 @@ class Category
     return true;*/
 
     }
+    
+
+    
+
 }

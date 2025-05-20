@@ -7,7 +7,7 @@ use app\controllers\CategoryController;
 use app\model\entities\Category;
 
 $controller = new CategoryController();
-$result = $controller->deleteCategory($_GET['id']);
+$result = $controller->deleteCategory($_POST);
 //falta validar si existe el bill
 ?>
 <!DOCTYPE html>
@@ -22,12 +22,14 @@ $result = $controller->deleteCategory($_GET['id']);
 <body>
     <h1>Result:</h1>
     <?php
-    if ($result) {
+    if ($result == null) {
         echo '<p>Category Deleted</p>';
     } else {
         echo '<p>The operation was unsuccesfull</p>';
     }
+    
     ?>
+    
     <a href="../menu.php">Back</a>
 </body>
 

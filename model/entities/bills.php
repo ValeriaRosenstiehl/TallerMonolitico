@@ -15,7 +15,7 @@ class Bills
     
     public function setConex(ConexDB $conex)
     {
-        $this->$conex=$conex;
+        $this->conex=$conex;
     }
     public function __construct($id,$value,$idCategory = 0,$idReport = 0)
     {

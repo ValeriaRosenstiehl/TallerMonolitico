@@ -20,7 +20,7 @@ $result = $controller->modifyIncomeValue($_POST);
 <body>
     <h1>Result:</h1>
     <?php
-    if ($result) {
+    if ($result == null) {
         echo '<p>The new value was updated</p>';
     } else {
         echo '<p>The operation was unsuccesfull</p>';

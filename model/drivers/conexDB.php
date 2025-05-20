@@ -3,7 +3,7 @@
 namespace app\models\drivers;
 
 use mysqli;
-
+use Exception;
 
 class ConexDB {
     private $host = 'localhost';
@@ -15,7 +15,7 @@ class ConexDB {
 
     public function __construct()
     {
-        // try{
+        try{
        
         $this->conex = new mysqli(
             $this->host,
@@ -28,12 +28,12 @@ class ConexDB {
                 return;
             }
            
-        // if ($this->conex->connect_error) {
-        //         throw new Exception("Error de conexión: " . $this->conex->connect_error);
-        //     }
-        // } catch (Exception $e) {
-        //     throw new Exception("No se pudo establecer conexión con la base de datos: " . $e->getMessage());
-        //  }
+         if ($this->conex->connect_error) {
+                 echo "Error de conexión: " . $this->conex->connect_error;
+             }
+             } catch (Exception $e) {
+             echo "No se pudo establecer conexión con la base de datos: " . $e->getMessage();
+          }
     }
     
 

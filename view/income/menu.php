@@ -10,6 +10,6 @@
      <title>Actions:</title>
     <a href="formAdd.php">Add Income</a><br>
     <a href="formModify.php">Modify Income Value</a><br>
-    <a href="../../inicio/index.php">Home</a>
+    <a href="../../index.php">Home</a>
 </body>
 </html>

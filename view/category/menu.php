@@ -11,6 +11,6 @@
     <a href="formAdd.php">Add Category</a><br>
     <a href="formDelete.php">Delete Category</a><br>
     <a href="formModify.php">Modify Category</a><br>
-    <a href="../../inicio/index.php">Home</a>
+    <a href="../../index.php">Home</a>
 </body>
 </html>
