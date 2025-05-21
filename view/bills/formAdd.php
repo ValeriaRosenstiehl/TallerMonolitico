@@ -67,7 +67,6 @@ $reports = $controller->queryAllReport();
             <button type="submit">Save</button>
         </div>
          <a href="menu.php">Back</a>
-         <a href="../../inicio/index.php">Home</a>
         
     
     </form>

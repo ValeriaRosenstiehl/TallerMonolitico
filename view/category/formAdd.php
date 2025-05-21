@@ -29,7 +29,6 @@ include 'C:\xampp\htdocs\55824002\TallerMonolitico\model\entities\Category.php';
             <button type="submit">Save</button>
         </div>
         <a href="menu.php">Back</a><br>
-         <a href="../../inicio/index.php">Home</a>
     </form>
     
    
