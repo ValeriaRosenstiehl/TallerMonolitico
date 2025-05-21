@@ -10,6 +10,8 @@ class IncomeController
     public function queryAllIncome()
     {
         $income = new Income(0,0.0,0);
+         $conexDB = new ConexDB;
+        $income->setConex($conexDB);
         $data = $income->show();
         return $data;
     }

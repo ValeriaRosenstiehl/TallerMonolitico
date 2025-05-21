@@ -36,7 +36,7 @@ $reports = $controller->queryAllReport();
         </div>
             <button type="submit">Show</button>
         </div>
-        <a href="showReport.php">Back</a>
+        <a href="../../index.php">Back</a>
     </form>
     
    

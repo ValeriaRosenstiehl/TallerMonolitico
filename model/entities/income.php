@@ -56,4 +56,5 @@ class Income
         $this->conex->close();
 
     }
+    
 }

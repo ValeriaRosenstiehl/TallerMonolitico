@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\model\entities\Category;
 use app\models\entities\Bills;
+use app\models\entities\BillReport;
 use app\models\drivers\ConexDB;
 
 class BillsController
@@ -11,6 +12,8 @@ class BillsController
     public function queryAllBills()
     {
         $bills = new Bills(0, 0.0);
+        $conexDB = new ConexDB;
+        $bills->setConex($conexDB);
         $data = $bills->show();
         return $data;
     }
@@ -49,5 +52,13 @@ class BillsController
         $bill->delete($id);
     }
 
+    public function getBillsByReport($request){
+        $id = isset($request['idReport']) ? floatval($request['idReport']) : 0;
+        $bills = new Bills(0, 0.0);
+        $conexDB = new ConexDB;
+        $bills->setConex($conexDB);
+        $data = $bills->getBillsByReport($id);
+        return $data;
+    }
 
 }

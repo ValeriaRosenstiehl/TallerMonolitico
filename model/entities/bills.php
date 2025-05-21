@@ -3,6 +3,7 @@
 namespace app\models\entities;
 
 use app\models\drivers\ConexDB;
+use app\models\entities\billReport;
 
 
 class Bills
@@ -43,11 +44,47 @@ class Bills
 
             }
         }
+        
 
         $this->conex->close();
         return $bills; 
 
+
     }
+    public function getBillsByReport($idReport)
+{
+    $sql = "SELECT b.id, b.value, b.idCategory, b.idReport, c.name, c.percentage, i.value AS incomeValue, 
+                   (b.value / i.value) * 100 AS porcentaje_ex, 
+                   CASE WHEN ((b.value / i.value) * 100) > c.percentage THEN 'Overspending' ELSE 'OK' END AS Result,
+                   c.percentage - ((b.value / i.value) * 100) AS Ahorro 
+            FROM bills AS b 
+            INNER JOIN categories AS c ON b.idCategory = c.id 
+            INNER JOIN income AS i ON b.idReport = i.idReport 
+            WHERE i.idReport = " . $idReport;
+
+    $resultDb = $this->conex->execSQL($sql);
+    $billsReport = [];
+
+    if ($resultDb->num_rows > 0) {
+        while ($rowDb = $resultDb->fetch_assoc()) {
+            // Create a new BillReport object for each row
+            $billsReport[] = new BillReport(
+                $rowDb['id'],
+                $rowDb['value'],
+                $rowDb['idCategory'],
+                $rowDb['idReport'],
+                $rowDb['name'], // category name
+                $rowDb['percentage'], // category percentage
+                $rowDb['incomeValue'], // income value
+                $rowDb['porcentaje_ex'],
+                $rowDb['Result'],
+                $rowDb['Ahorro']
+            );
+        }
+    }
+    $this->conex->close();
+    return $billsReport; // Return the array of BillReport objects
+}
 
     public function add()
     {
@@ -84,4 +121,5 @@ class Bills
     //     if (!is_numeric($id) || $id <= 0) {
     //         return "ID inválido.";
     //     }
+    
 }
