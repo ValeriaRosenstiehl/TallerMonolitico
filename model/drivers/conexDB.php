@@ -8,7 +8,7 @@ use Exception;
 class ConexDB {
     private $host = 'localhost';
     private $user = 'root';
-    private $pwd = '';
+    private $pwd = 'BASES2025';
     private $nameDB = 'proyecto_1_db';
 
     private $conex = null;
